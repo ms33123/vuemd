@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <!-- <ul>
+            
+        <li v-for="item in fruits">{{item}}</li>
+
+        <li :key="item.index" v-for="(item,index) in myFruits">
+            <span>{{item.ename}}</span>
+            <span>{{item.cname}}</span>
+        </li>
+        </ul> -->
+
+        <ul>
+            <li v-for="(value,key,index) in obj">{{value + '---' + key + '---' + index}}</li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                fruits: ['apple', 'orange', 'banana'],
+                myFruits: [{
+                    ename: 'apple',
+                    cname: '苹果'
+                }, {
+                    ename: 'orange',
+                    cname: '橘子'
+                }, {
+                    ename: 'banana',
+                    cname: '香蕉'
+                }],
+                obj: {
+                    user: '张三',
+                    age: '18',
+                    sex: 'meal'
+                }
+            },
+            methods: {
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>

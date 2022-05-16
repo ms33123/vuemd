@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        .active {
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .error {
+            background-color: pink;
+        }
+        
+        .text {
+            color: chartreuse;
+        }
+        
+        .base {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- 对象方法 -->
+        <div v-bind:class="{active:isActive,error:isError}">54415</div>
+        <!-- 数组方法 -->
+        <div v-bind:class="[activeClass,errorClass,{text:isText}]">54415</div>
+        <div v-bind:class="arrClasses">54415</div>
+        <div class="base" v-bind:class="objClasses">54415</div>
+        <div v-bind:class="objClasses">54415</div>
+        <button v-on:click="fn">切换</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                // isActive: true,
+                // isError: true,
+                isText: true,
+                activeClass: 'active',
+                errorClass: 'error',
+                arrClasses: ['active', 'error'],
+                objClasses: {
+                    active: true,
+                    error: true
+                }
+            },
+            methods: {
+                fn: function() {
+                    // if (this.isActive) {
+                    //     this.isActive = false;
+                    // } else {
+                    //     this.isActive = true;
+                    // }
+                    this.isActive = !this.isActive;
+                    this.isError = !this.isError;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

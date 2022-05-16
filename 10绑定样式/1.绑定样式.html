@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        .basic {
+            width: 300px;
+            height: 200px;
+            border: 2px solid #ccc;
+        }
+        
+        .nomal {
+            background-color: pink;
+        }
+        
+        .happy {
+            background-color: yellow;
+        }
+        
+        .sad {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 绑定样式：
+        1.class样式：
+            写法：class=“xxx” xxx可以是字符串、对象、数组
+                字符串写法适用于：类名不确定，要动态获取
+                对象写法适用于：要绑定多个样式，个数不确定，名字也不确定
+                数组写法适用于：要绑定多个样式，个数确定，名字也确定，但不确定用不用
+        2.style样式
+            ：style=“{fontSize：xxx}”，其中xxx是动态值
+            ：style=“[a,b]” 其中a，b是样式对象
+             -->
+    <div class="app">
+        <!-- 绑定class样式--字符串写法，适用于：样式的类名不确定，需要动态绑定 -->
+        <div class="basic" :class="a" @click="fn">{{name}}</div>
+        <br>
+        <br>
+        <!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定、名字也不确定 -->
+        <div class="basic" :class="classArr">{{name}}</div>
+        <br>
+        <br>
+        <!-- 绑定class样式--对象写法，适用于：要绑定的样式个数确定、名字也确定，但要动态决定 -->
+        <div class="basic" :class="classObj">{{name}}</div>
+        <br>
+        <br>
+        <!-- 绑定style样式--对象写法-->
+        <div class="basic" :style="styleObj1">{{name}}</div>
+        <br>
+        <br>
+        <!-- 绑定style样式--数组写法-->
+        <div class="basic" :style="[styleObj1,styleObj2]">{{name}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                name: '你好',
+                a: 'nomal',
+                classArr: ['nomal', 'happy', 'sad'],
+                classObj: {
+                    happy: true,
+                    sad: false
+                },
+                styleObj1: {
+                    fontSize: '40px',
+                    color: 'red',
+                },
+                styleObj2: {
+                    backgroundColor: 'blue'
+                }
+            },
+            methods: {
+                fn() {
+                    const arr = ['nomal', 'happy', 'sad'];
+                    const index = Math.floor(Math.random() * 3); //0-2之间的随机数
+                    this.a = arr[index];
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

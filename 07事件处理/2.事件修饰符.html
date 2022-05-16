@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        .demo1 {
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Vue中的事件修饰符：
+        1.prevent：阻止默认事件（常用）
+        2.stop：阻止事件冒泡（常用）
+        3.once：事件只触发一次
+        4.capture：使用事件的捕获模式
+        5.self：只有event.target是当前操作的元素是才触发事件
+        6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+    <div class="app">
+        <h2>{{name}}</h2>
+        <!-- 阻止默认事件（常用） -->
+        <a href="http://www.baidu.com" v-on:click.prevent="fn">百度</a>
+
+
+        <!-- 阻止事件冒泡 -->
+        <div @click="fn1">
+            <button @click.stop="fn1">点我提示信息</button>
+        </div>
+
+        <!-- 事件触发一次 -->
+        <button @click.once="fn1">触发一次</button>
+
+        <!-- 只有event.target是当前操作的元素是才触发事件 -->
+        <div class="demo1" @click.self="fn1">
+            <button @click="fn">点我提示信息</button>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                name: 'hello world'
+            },
+            methods: {
+                fn(e) {
+                    // e.preventDefault(); //阻止a标签的默认行为
+                    alert('你好321');
+                },
+                fn1(e) {
+                    // e.stopPropagation();
+                    alert('你好');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

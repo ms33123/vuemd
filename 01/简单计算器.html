@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        数值A:<input type="text" v-model="one"> 数值B:
+        <input type="text" v-model="two">
+        <button v-on:click="fn">计算</button> 数值:
+        <div v-text="result"></div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                one: '',
+                two: '',
+                result: ''
+            },
+            methods: {
+                fn: function() {
+                    this.result = parseFloat(this.one) + parseFloat(this.two);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

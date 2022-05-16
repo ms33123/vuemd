@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="two">
+        <form action="">
+            <input type="text" v-model="uname" v-on:keyup.delete="fn2">
+            <input type="password" name="" id="" v-model="pwd" v-on:keyup.enter="fn1">
+            <input type="button" value="提交" v-on:click="fn1">
+        </form>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        //创建vue实例
+        var vm = new Vue({
+            el: '.two',
+            data: {
+                uname: '',
+                pwd: ''
+            },
+            methods: {
+                fn1: function() {
+                    console.log(this.uname, this.pwd);
+                },
+                fn2: function() {
+                    this.uname = '';
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
